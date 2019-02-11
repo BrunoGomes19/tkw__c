@@ -5,6 +5,7 @@ import CATEGORY_FIELD from '@salesforce/schema/Product__c.Category__c';
 import LEVEL_FIELD from '@salesforce/schema/Product__c.Level__c';
 import MATERIAL_FIELD from '@salesforce/schema/Product__c.Material__c';
 import MODELOCOMPONENTE_FIELD from '@salesforce/schema/Product__c.Modelo_Componente__c';
+import RATING_FIELD from '@salesforce/schema/Product__c.Rating__c';
 
 /** Pub-sub mechanism for sibling component communication. */
 import { fireEvent } from 'c/pubsub';
@@ -50,6 +51,12 @@ export default class ProductFilter extends LightningElement {
     })
     modelocomponentes;
 
+    @wire(getPicklistValues, {
+        recordTypeId: '012000000000000AAA',
+        fieldApiName: RATING_FIELD
+    })
+    ratings;
+
     handleSearchKeyChange(event) {
         this.filters.searchKey = event.target.value;
         this.delayedFireFilterChangeEvent();
@@ -76,6 +83,10 @@ export default class ProductFilter extends LightningElement {
             //Customs
 
             this.filters.modelocomponentes = this.modelocomponentes.data.values.map(
+                item => item.value
+            );
+
+            this.filters.ratings = this.ratings.data.values.map(
                 item => item.value
             );
 

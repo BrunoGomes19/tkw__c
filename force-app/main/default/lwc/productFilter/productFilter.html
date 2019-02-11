@@ -42,6 +42,19 @@
                 </template>
             </section>
 
+            <section>
+                <h1>Rating</h1>
+                <template if:true={ratings.data}>
+                    <template for:each={ratings.data.values} for:item="rating">
+                        <lightning-input key={rating.value} label={rating.label} data-filter="ratings" data-value={rating.value}
+                            type="checkbox" checked onchange={handleCheckboxChange}></lightning-input>
+                    </template>
+                </template>
+                <template if:true={ratings.error}>
+                    <c-inline-message message="Error loading ratings" errors={ratings.error}></c-inline-message>
+                </template>
+            </section>
+
 
         </div>
     </lightning-card>
