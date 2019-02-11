@@ -30,17 +30,19 @@
                 </template>
             </section>
             <section>
-                <h1>Level</h1>
-                <template if:true={levels.data}>
-                    <template for:each={levels.data.values} for:item="level">
-                        <lightning-input key={level.value} label={level.label} data-filter="levels" data-value={level.value}
+                <h1>Modelo/Componente</h1>
+                <template if:true={modelocomponentes.data}>
+                    <template for:each={modelocomponentes.data.values} for:item="modelocomponente">
+                        <lightning-input key={modelocomponente.value} label={modelocomponente.label} data-filter="modelocomponentes" data-value={modelocomponente.value}
                             type="checkbox" checked onchange={handleCheckboxChange}></lightning-input>
                     </template>
                 </template>
-                <template if:true={levels.error}>
-                    <c-inline-message message="Error loading levels" errors={levels.error}></c-inline-message>
+                <template if:true={modelocomponentes.error}>
+                    <c-inline-message message="Error loading modelocomponentes" errors={modelocomponentes.error}></c-inline-message>
                 </template>
             </section>
+
+
         </div>
     </lightning-card>
 </template>

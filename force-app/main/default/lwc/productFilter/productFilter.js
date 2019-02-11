@@ -4,6 +4,7 @@ import { getPicklistValues } from 'lightning/uiObjectInfoApi';
 import CATEGORY_FIELD from '@salesforce/schema/Product__c.Category__c';
 import LEVEL_FIELD from '@salesforce/schema/Product__c.Level__c';
 import MATERIAL_FIELD from '@salesforce/schema/Product__c.Material__c';
+import MODELOCOMPONENTE_FIELD from '@salesforce/schema/Product__c.Modelo_Componente__c';
 
 /** Pub-sub mechanism for sibling component communication. */
 import { fireEvent } from 'c/pubsub';
@@ -43,6 +44,12 @@ export default class ProductFilter extends LightningElement {
     })
     materials;
 
+    @wire(getPicklistValues, {
+        recordTypeId: '012000000000000AAA',
+        fieldApiName: MODELOCOMPONENTE_FIELD
+    })
+    modelocomponentes;
+
     handleSearchKeyChange(event) {
         this.filters.searchKey = event.target.value;
         this.delayedFireFilterChangeEvent();
@@ -66,6 +73,12 @@ export default class ProductFilter extends LightningElement {
             this.filters.materials = this.materials.data.values.map(
                 item => item.value
             );
+            //Customs
+
+            this.filters.modelocomponentes = this.modelocomponentes.data.values.map(
+                item => item.value
+            );
+
         }
         const value = event.target.dataset.value;
         const filterArray = this.filters[event.target.dataset.filter];

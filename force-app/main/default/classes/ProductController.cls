@@ -12,17 +12,20 @@ public with sharing class ProductController {
         public String[] materials { get;set; }
 
         public String[] levels { get;set; }
+
+        public String[] modelocomponentes { get;set; }
     }
 
     @AuraEnabled(Cacheable=true)
     public static PagedResult getProducts(String filters, Integer pageNumber) {
         String key, whereClause = '';
         Decimal maxPrice;
-        String[] categories, materials, levels, criteria = new String[]{};
+        String[] categories, materials, levels, modelocomponentes , criteria = new String[]{};
         if (!String.isEmpty(filters)) {
             Filters productFilters = (Filters) JSON.deserializeStrict(filters, ProductController.Filters.class);
             maxPrice = productFilters.maxPrice;
             materials = productFilters.materials;
+            modelocomponentes = productFilters.modelocomponentes;
             levels = productFilters.levels;
             if (!String.isEmpty(productFilters.searchKey)) {
                 key = '%' + productFilters.searchKey + '%';
@@ -39,7 +42,11 @@ public with sharing class ProductController {
             if (productFilters.levels != null) {
                 levels = productFilters.levels;
                 criteria.add('Level__c IN :levels');
-            }                      
+            } 
+            if (productFilters.modelocomponentes != null) {
+                modelocomponentes = productFilters.modelocomponentes;
+                criteria.add('Modelo_Componente__c IN :modelocomponentes');
+            }                     
             if (productFilters.materials != null) {
                 materials = productFilters.materials;
                 criteria.add('Material__c IN :materials');
@@ -54,13 +61,13 @@ public with sharing class ProductController {
         result.pageSize = pageSize;
         result.pageNumber = pageNumber;
         result.totalItemCount = Database.countQuery('SELECT count() FROM Product__c ' + whereClause);
-        result.records = Database.query('SELECT Id, Name, MSRP__c, Description__c, Category__c, Level__c, Picture_URL__c, Material__c FROM Product__c ' + whereClause + ' ORDER BY Name LIMIT :pageSize OFFSET :offset');
+        result.records = Database.query('SELECT Id, Name, MSRP__c, Description__c, Category__c, Level__c, Picture_URL__c, Material__c, Modelo_Componente__c FROM Product__c ' + whereClause + ' ORDER BY Name LIMIT :pageSize OFFSET :offset');
         return result;
     }
 
     @AuraEnabled(Cacheable=true)
     public static Product__c[] getSimilarProducts(Id productId, Id familyId) {
-        return [SELECT Id, Name, MSRP__c, Description__c, Category__c, Level__c, Picture_URL__c, Material__c FROM Product__c WHERE Product_Family__c=:familyId AND Id!=:productId];
+        return [SELECT Id, Name, MSRP__c, Description__c, Category__c, Level__c, Picture_URL__c, Material__c, Modelo_Componente__c FROM Product__c WHERE Product_Family__c=:familyId AND Id!=:productId];
     }
 
 }
