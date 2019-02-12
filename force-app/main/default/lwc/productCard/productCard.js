@@ -77,4 +77,9 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     get noData() {
         return !this.product.error && !this.product.data;
     }
+
+    handleClick(){
+        window.location.replace("https://tekkon-wheels-dev-ed.lightning.force.com/lightning/n/Customization");
+
+    }
 }
