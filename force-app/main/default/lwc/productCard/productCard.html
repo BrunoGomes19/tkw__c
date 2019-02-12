@@ -50,7 +50,10 @@
                     <div>Rear:</div>
                     <div>Hydraulic disc, 200mm</div>
                 </div>
+                <lightning-button-icon icon-name="utility:open" hover="Customizar" slot="actions" onclick={handleNavigateToRecord}></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:expand" hover="Customizar" slot="actions" onclick={handleNavigateToRecord}></lightning-button-icon>
             </div>
+            
         </template>                            
 
         <template if:true={noData}>

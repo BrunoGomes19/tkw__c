@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { LightningElement, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import { NavigationMixin } from 'lightning/navigation';
@@ -9,8 +10,10 @@ import { getRecord } from 'lightning/uiRecordApi';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
 /** Product__c Schema. */
-import PRODUCT_OBJECT from '@salesforce/schema/Product2';
+import PRODUCT_OBJECT from '@salesforce/schema/Product__c';
+import PRODUCT_OBJECTX from '@salesforce/schema/Product2';
 import NAME_FIELD from '@salesforce/schema/Product__c.Name';
+import PRODUCT_ID from '@salesforce/schema/Product__c.Product_ID__c';
 import LEVEL_FIELD from '@salesforce/schema/Product__c.Level__c';
 import CATEGORY_FIELD from '@salesforce/schema/Product__c.Category__c';
 import MATERIAL_FIELD from '@salesforce/schema/Product__c.Material__c';
@@ -24,7 +27,8 @@ const fields = [
     CATEGORY_FIELD,
     MATERIAL_FIELD,
     MSRP_FIELD,
-    PICTURE_URL_FIELD
+    PICTURE_URL_FIELD,
+    PRODUCT_ID
 ];
 
 /**
@@ -33,12 +37,15 @@ const fields = [
 export default class ProductCard extends NavigationMixin(LightningElement) {
     /** Id of Product__c to display. */
     recordId;
+    
 
     @wire(CurrentPageReference) pageRef;
 
     /** Load the Product__c to display. */
     @wire(getRecord, { recordId: '$recordId', fields })
     product;
+    
+    
 
     connectedCallback() {
         registerListener('productSelected', this.handleProductSelected, this);
@@ -61,7 +68,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
             type: 'standard__recordPage',
             attributes: {
                 recordId: this.recordId,
-                objectApiName: PRODUCT_OBJECT.objectApiName,
+                objectApiName: PRODUCT_OBJECTX.objectApiName,
                 actionName: 'view'
             }
         });

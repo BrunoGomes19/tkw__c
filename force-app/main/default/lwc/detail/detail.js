@@ -21,4 +21,6 @@ export default class Detail extends LightningElement {
     get productId(){
         return this._productId;
     }
+
+    
 }
