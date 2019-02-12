@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import PRODUCT_OBJECT from '@salesforce/schema/Product__c';
+import PRODUCT_OBJECT from '@salesforce/schema/Product2';
 
 /**
  * A presentation component to display a Product__c sObject. The provided

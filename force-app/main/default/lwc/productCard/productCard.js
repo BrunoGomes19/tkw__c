@@ -9,7 +9,7 @@ import { getRecord } from 'lightning/uiRecordApi';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
 /** Product__c Schema. */
-import PRODUCT_OBJECT from '@salesforce/schema/Product__c';
+import PRODUCT_OBJECT from '@salesforce/schema/Product2';
 import NAME_FIELD from '@salesforce/schema/Product__c.Name';
 import LEVEL_FIELD from '@salesforce/schema/Product__c.Level__c';
 import CATEGORY_FIELD from '@salesforce/schema/Product__c.Category__c';

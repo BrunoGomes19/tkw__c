@@ -39,19 +39,19 @@ public with sharing class ProductController {
                 criteria.add('MSRP__c <= :maxPrice');
             }
             
-            /*if (productFilters.categories != null) {
+            if (productFilters.categories != null) {
                 categories = productFilters.categories;
                 criteria.add('Category__c IN :categories');
-            }*/                      
+            }                 
            
             if (productFilters.modelocomponentes != null ) {
                 modelocomponentes = productFilters.modelocomponentes;
                 criteria.add('Modelo_Componente__c IN :modelocomponentes');
             }                     
-            /*if (productFilters.materials != null) {
+            if (productFilters.materials != null) {
                 materials = productFilters.materials;
                 criteria.add('Material__c IN :materials');
-            }*/
+            }
             if (productFilters.ratings != null) {
                 ratings = productFilters.ratings;
                 criteria.add('Rating__c IN :ratings');
