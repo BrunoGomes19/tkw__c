@@ -38,22 +38,20 @@ public with sharing class ProductController {
                 maxPrice = productFilters.maxPrice;
                 criteria.add('MSRP__c <= :maxPrice');
             }
-            if (productFilters.categories != null) {
+            
+            /*if (productFilters.categories != null) {
                 categories = productFilters.categories;
                 criteria.add('Category__c IN :categories');
-            }                      
-            if (productFilters.levels != null) {
-                levels = productFilters.levels;
-                criteria.add('Level__c IN :levels');
-            } 
-            if (productFilters.modelocomponentes != null) {
+            }*/                      
+           
+            if (productFilters.modelocomponentes != null ) {
                 modelocomponentes = productFilters.modelocomponentes;
                 criteria.add('Modelo_Componente__c IN :modelocomponentes');
             }                     
-            if (productFilters.materials != null) {
+            /*if (productFilters.materials != null) {
                 materials = productFilters.materials;
                 criteria.add('Material__c IN :materials');
-            }
+            }*/
             if (productFilters.ratings != null) {
                 ratings = productFilters.ratings;
                 criteria.add('Rating__c IN :ratings');
@@ -68,13 +66,13 @@ public with sharing class ProductController {
         result.pageSize = pageSize;
         result.pageNumber = pageNumber;
         result.totalItemCount = Database.countQuery('SELECT count() FROM Product__c ' + whereClause);
-        result.records = Database.query('SELECT Id, Name, MSRP__c, Description__c, Category__c, Rating__c, Level__c, Picture_URL__c, Material__c, Modelo_Componente__c FROM Product__c ' + whereClause + ' ORDER BY Name LIMIT :pageSize OFFSET :offset');
+        result.records = Database.query('SELECT Id, Name, MSRP__c, Description__c, Category__c, Rating__c, Picture_URL__c, Material__c, Modelo_Componente__c FROM Product__c ' + whereClause + ' ORDER BY Name LIMIT :pageSize OFFSET :offset');
         return result;
     }
 
     @AuraEnabled(Cacheable=true)
     public static Product__c[] getSimilarProducts(Id productId, Id familyId) {
-        return [SELECT Id, Name, MSRP__c, Description__c, Category__c, Level__c, Rating__c, Picture_URL__c, Material__c, Modelo_Componente__c FROM Product__c WHERE Product_Family__c=:familyId AND Id!=:productId];
+        return [SELECT Id, Name, MSRP__c, Description__c, Category__c, Rating__c, Picture_URL__c, Material__c, Modelo_Componente__c FROM Product__c WHERE Product_Family__c=:familyId AND Id!=:productId];
     }
 
 }
