@@ -4,6 +4,9 @@
             <span slot="title">{product.data.fields.Name.value}</span>
             <lightning-button-icon icon-name="utility:expand_alt" slot="actions" onclick={handleNavigateToRecord}></lightning-button-icon>
             <div class="slds-m-horizontal_medium">
+
+                
+
                 <img src={product.data.fields.Picture_URL__c.value} class="product" alt="Product picture5567">
                 <div class="row">
                     <div>Category:</div>
@@ -51,10 +54,14 @@
                     <div>Hydraulic disc, 200mm</div>
                 </div>
                 <div class="navbut"><br>
+                    <div class="navbut2" id="customizar">
                     <lightning-button  variant="brand" label="Customize" title="Brand action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
-
+                </div>
                 <lightning-button  label="Buy" title="Neutral action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
                 </div>
+
+        
+                
             </div>
             
         </template>                            

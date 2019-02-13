@@ -14,6 +14,7 @@ import PRODUCT_OBJECT from '@salesforce/schema/Product__c';
 import PRODUCT_OBJECTX from '@salesforce/schema/Product2';
 import NAME_FIELD from '@salesforce/schema/Product__c.Name';
 import PRODUCT_ID from '@salesforce/schema/Product__c.Product_ID__c';
+import PRODUCT_IDX from '@salesforce/schema/Product2.Product_ID__c';
 import LEVEL_FIELD from '@salesforce/schema/Product__c.Level__c';
 import CATEGORY_FIELD from '@salesforce/schema/Product__c.Category__c';
 import MATERIAL_FIELD from '@salesforce/schema/Product__c.Material__c';
@@ -28,7 +29,8 @@ const fields = [
     MATERIAL_FIELD,
     MSRP_FIELD,
     PICTURE_URL_FIELD,
-    PRODUCT_ID
+    PRODUCT_ID,
+    PRODUCT_IDX
 ];
 
 /**
@@ -61,6 +63,13 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
      */
     handleProductSelected(productId) {
         this.recordId = productId;
+
+        // eslint-disable-next-line no-console
+        console.log(PRODUCT_IDX);
+
+        // eslint-disable-next-line no-console
+        console.log(JSON.stringify(PRODUCT_IDX));
+
     }
 
     handleNavigateToRecord() {
