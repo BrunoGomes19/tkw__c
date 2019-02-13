@@ -1,3 +1,4 @@
+/* eslint-disable @lwc/lwc/no-document-query */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 import { LightningElement, wire } from 'lwc';
@@ -38,10 +39,7 @@ const fields = [
     MODCOMP_FIELD
 ];
 
-const fields2 = [
-    'Product2.Name',
-    'Product2.Product_ID__c',
-];
+
 /**
  * Component to display details of a Product__c.
  */
@@ -56,7 +54,11 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     @wire(getRecord, { recordId: '$recordId', fields : fields})
     product;
 
-    
+    get isModel(){
+
+        return this.product.data.fields.Modelo_Componente__c.value === 'Model';
+
+    }
     
 
     connectedCallback() {
@@ -73,17 +75,35 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
      */
     handleProductSelected(productId) {
         this.recordId = productId;
+        alert(this.product.data.fields.Modelo_Componente__c.value);
 
-        // eslint-disable-next-line no-console
-        console.log(PRODUCT_IDX);
+        
+        if(this.product.data.fields.Modelo_Componente__c.value === 'Component'){
+           alert(1);
+           
+            document.getElementById("modelo").style.display = "none";
 
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify(PRODUCT_IDX));
+            document.getElementById("componente").style.display = "block";
+
+     
+        }else if(this.product.data.fields.Modelo_Componente__c.value === 'Model'){
+            alert(2);
+
+            document.getElementById("modelo").style.display = "block";
+
+            document.getElementById("componente").style.display = "none";
+
+        }else{
+            
+            alert('Erro!');
+
+        }
+        
 
     }
 
     handleNavigateToRecord() {
-        alert(this.product.data.fields.Modelo_Componente__c.value);
+        
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
             attributes: {
