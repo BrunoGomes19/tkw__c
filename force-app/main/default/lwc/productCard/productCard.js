@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 import { LightningElement, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
@@ -19,6 +20,7 @@ import LEVEL_FIELD from '@salesforce/schema/Product__c.Level__c';
 import BATTERY_FIELD from '@salesforce/schema/Product__c.Battery__c';
 import CATEGORY_FIELD from '@salesforce/schema/Product__c.Category__c';
 import MATERIAL_FIELD from '@salesforce/schema/Product__c.Material__c';
+import MODCOMP_FIELD from '@salesforce/schema/Product__c.Modelo_Componente__c';
 import MSRP_FIELD from '@salesforce/schema/Product__c.MSRP__c';
 import PICTURE_URL_FIELD from '@salesforce/schema/Product__c.Picture_URL__c';
 
@@ -32,7 +34,8 @@ const fields = [
     PICTURE_URL_FIELD,
     PRODUCT_ID,
     PRODUCT_IDX,
-    BATTERY_FIELD
+    BATTERY_FIELD,
+    MODCOMP_FIELD
 ];
 
 const fields2 = [
@@ -52,21 +55,6 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     /** Load the Product__c to display. */
     @wire(getRecord, { recordId: '$recordId', fields : fields})
     product;
-
-    get name() {
-        return this.product.data.fields.Name.value;
-        
-    }
-
-    get MSRP() {
-        return this.product.data.fields.MSRP__c.value;
-        
-    }
-
-    get battery() {
-        return this.product.data.fields.Battery__c.value;
-        
-    }
 
     
     
@@ -95,11 +83,10 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     }
 
     handleNavigateToRecord() {
-        alert(this.product.data.fields.Product_ID__c.value);
+        alert(this.product.data.fields.Modelo_Componente__c.value);
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
             attributes: {
-                
                 recordId: this.recordId,
                 objectApiName: PRODUCT_OBJECTX.objectApiName,
                 actionName: 'view'

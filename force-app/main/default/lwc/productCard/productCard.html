@@ -8,7 +8,7 @@
                 
 
                 <img src={product.data.fields.Picture_URL__c.value} class="product" alt="Product picture5567">
-                <div class="row">
+                <div class="row" id="tirarCategoria">
                     <div>Category:</div>
                     <div>{product.data.fields.Category__c.value}</div>
                 </div>
@@ -18,17 +18,18 @@
                     <div>{product.data.fields.Level__c.value}</div>
                 </div>-->
                 <div class="row">
-                    <div>MSRP:</div>
+                    <div>Price:</div>
                     <div>
-                        <lightning-formatted-number format-style="currency" currency-code="USD" value={product.data.fields.MSRP__c.value} class="price"></lightning-formatted-number>
+                        <lightning-formatted-number format-style="currency" currency-code="EUR" value={product.data.fields.MSRP__c.value} class="price"></lightning-formatted-number>
                     </div>
                 </div>
                 <section>Electric Components</section>
-                <div class="row">
+                <div id="tirar">
+                <div class="row" >
                     <div>Battery:</div>
                     <div>{product.data.fields.Battery__c.value}</div>
                 </div>
-                <div class="row">
+                <div class="row" >
                     <div>Charger:</div>
                     <div>42V4A</div>
                 </div>
@@ -53,6 +54,7 @@
                 <div class="row">
                     <div>Rear:</div>
                     <div>Hydraulic disc, 200mm</div>
+                </div>
                 </div>
                 <div class="navbut"><br>
                     <div class="navbut2" id="customizar">
