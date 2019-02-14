@@ -32,6 +32,13 @@ import REARBRAKES_FIELD from '@salesforce/schema/Product__c.Rear_Brakes__c';
 import MOTOR_FIELD from '@salesforce/schema/Product__c.Motor__c';
 import DESCRIPTION_FIELD from '@salesforce/schema/Product__c.Description__c';
 
+import FRAME_FIELD from '@salesforce/schema/Product__c.Frame__c';
+import FRONTWHEEL_FIELD from '@salesforce/schema/Product__c.Front_Wheel__c';
+import HEADSET_FIELD from '@salesforce/schema/Product__c.Head_Set__c';
+import PEDALS_FIELD from '@salesforce/schema/Product__c.Pedals__c';
+import REARWHEEL_FIELD from '@salesforce/schema/Product__c.Rear_Wheel__c';
+import SADDLE_FIELD from '@salesforce/schema/Product__c.Saddle__c';
+
 
 /** Record fields to load. */
 const fields = [
@@ -50,7 +57,13 @@ const fields = [
     FRONTBRAKES_FIELD,
     REARBRAKES_FIELD,
     MOTOR_FIELD,
-    DESCRIPTION_FIELD
+    DESCRIPTION_FIELD,
+    FRAME_FIELD,
+    FRONTWHEEL_FIELD,
+    HEADSET_FIELD,
+    PEDALS_FIELD,
+    REARWHEEL_FIELD,
+    SADDLE_FIELD
 ];
 
 
@@ -89,40 +102,15 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
      */
     handleProductSelected(productId) {
         this.recordId = productId;
-        //alert(this.product.data.fields.Modelo_Componente__c.value);
-        alert(this.product.data.fields.Battery__c.value);
-          if(this.product.data.fields.Battery__c.value === "null" || this.product.data.fields.Battery__c.value === null || this.product.data.fields.Battery__c.value === ""){
 
-   
-            this.product.data.fields.Battery__c.value = 'Not Applicable';
+        /*alert(this.product.data.fields.Battery__c.value);
+          if(this.product.data.fields.Battery__c.value == null){
 
-            alert(this.product.data.fields.Battery__c.value);
-            alert(product.data.fields.Battery__c.value);
-        
-        }
+            this.product.data.fields.Battery__c.value = "Not Applicable";
 
-        /*
-        if(this.product.data.fields.Modelo_Componente__c.value === 'Component'){
-           alert(1);
-           
-            document.getElementById("modelo").style.display = "none";
-
-            document.getElementById("componente").style.display = "block";
-
-     
-        }else if(this.product.data.fields.Modelo_Componente__c.value === 'Model'){
-            alert(2);
-
-            document.getElementById("modelo").style.display = "block";
-
-            document.getElementById("componente").style.display = "none";
-
-        }else{
-            
-            alert('Erro!');
-
-        }
-        */
+            //alert(this.product.data.fields.Battery__c.value);
+            //alert(product.data.fields.Battery__c.value);
+        }*/
 
     }
 
