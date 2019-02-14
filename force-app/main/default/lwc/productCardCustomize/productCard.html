@@ -1,0 +1,88 @@
+<template>
+    <lightning-card icon-name="standard:apex_plugin">
+        <template if:true={product.data}>
+            <span slot="title">{product.data.fields.Name.value}</span>
+            <lightning-button-icon icon-name="utility:expand_alt" slot="actions" onclick={handleNavigateToRecord}></lightning-button-icon>
+            <div class="slds-m-horizontal_medium">
+
+                <img src={product.data.fields.Picture_URL__c.value} class="product" alt="Product picture5567">
+
+                <div id="modelo">
+
+                <div class="row" id="tirarCategoria">
+                    <div>Category:</div>
+                    <div>{product.data.fields.Category__c.value}</div>
+                </div>
+                <div class="row">
+                    <div>Price:</div>
+                    <div>
+                        <lightning-formatted-number format-style="currency" currency-code="EUR" value={product.data.fields.MSRP__c.value} class="price"></lightning-formatted-number>
+                    </div>
+                </div>
+                <section>Electric Components</section>
+                <div id="tirar">
+                <div class="row" >
+                    <div>Battery:</div>
+                    <div>{product.data.fields.Battery__c.value}</div>
+                </div>
+                <div class="row" >
+                    <div>Charger:</div>
+                    <div>42V4A</div>
+                </div>
+                <div class="row">
+                    <div>Motor:</div>
+                    <div>250 watt, 75Nm</div>
+                </div>
+                <section>Frame</section>
+                <div class="row">
+                    <div>Frame:</div>
+                    <div>{product.data.fields.Material__c.value}</div>
+                </div>
+                <div class="row">
+                    <div>Fork da Catarina:</div>
+                    <div>Air spring, adjustable rebound</div>
+                </div>
+                <section>Brakes</section>
+                <div class="row">
+                    <div>Front:</div>
+                    <div>Hydraulic disc, 200mm</div>
+                </div>
+                <div class="row">
+                    <div>Rear:</div>
+                    <div>Hydraulic disc, 200mm</div>
+                </div>
+                </div>
+
+            </div>
+
+            <div id="componente" style="display:none;">
+
+                <div class="row">
+                    <div>Category:</div>
+                    <div>{product.data.fields.Category__c.value}</div>
+                </div>
+
+            </div>
+
+                <div class="navbut"><br>
+                    <div class="navbut2" id="customizar">
+                    <lightning-button  variant="brand" label="Customize" title="Brand action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                </div>
+                <lightning-button  label="Buy" title="Neutral action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                </div>
+
+        
+                
+            </div>
+            
+        </template>                            
+
+        <template if:true={noData}>
+            <c-placeholder message="Select a product to see details"></c-placeholder>
+        </template>
+
+        <template if:true={product.error}>
+            <c-inline-message errors={product.error}></c-inline-message>
+        </template>                
+    </lightning-card>
+</template>
