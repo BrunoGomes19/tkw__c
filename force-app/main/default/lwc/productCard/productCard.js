@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable @lwc/lwc/no-document-query */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
@@ -24,6 +25,13 @@ import MATERIAL_FIELD from '@salesforce/schema/Product__c.Material__c';
 import MODCOMP_FIELD from '@salesforce/schema/Product__c.Modelo_Componente__c';
 import MSRP_FIELD from '@salesforce/schema/Product__c.MSRP__c';
 import PICTURE_URL_FIELD from '@salesforce/schema/Product__c.Picture_URL__c';
+import CHARGER_FIELD from '@salesforce/schema/Product__c.Charger__c';
+import FORK_FIELD from '@salesforce/schema/Product__c.Fork__c';
+import FRONTBRAKES_FIELD from '@salesforce/schema/Product__c.Front_Brakes__c';
+import REARBRAKES_FIELD from '@salesforce/schema/Product__c.Rear_Brakes__c';
+import MOTOR_FIELD from '@salesforce/schema/Product__c.Motor__c';
+import DESCRIPTION_FIELD from '@salesforce/schema/Product__c.Description__c';
+
 
 /** Record fields to load. */
 const fields = [
@@ -36,7 +44,13 @@ const fields = [
     PRODUCT_ID,
     PRODUCT_IDX,
     BATTERY_FIELD,
-    MODCOMP_FIELD
+    MODCOMP_FIELD,
+    CHARGER_FIELD,
+    FORK_FIELD,
+    FRONTBRAKES_FIELD,
+    REARBRAKES_FIELD,
+    MOTOR_FIELD,
+    DESCRIPTION_FIELD
 ];
 
 
@@ -75,9 +89,19 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
      */
     handleProductSelected(productId) {
         this.recordId = productId;
-        alert(this.product.data.fields.Modelo_Componente__c.value);
+        //alert(this.product.data.fields.Modelo_Componente__c.value);
+        alert(this.product.data.fields.Battery__c.value);
+          if(this.product.data.fields.Battery__c.value === ""){
 
+   
+            product.data.fields.Battery__c.value = 'Not Applicable';
+
+            alert(this.product.data.fields.Battery__c.value);
+            alert(product.data.fields.Battery__c.value);
         
+        }
+
+        /*
         if(this.product.data.fields.Modelo_Componente__c.value === 'Component'){
            alert(1);
            
@@ -98,7 +122,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
             alert('Erro!');
 
         }
-        
+        */
 
     }
 

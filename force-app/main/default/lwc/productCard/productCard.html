@@ -31,7 +31,7 @@
                 <div class="row" >
                     <div>Battery:</div>
                     <div>{product.data.fields.Battery__c.value}</div>
-                </div><!--
+                </div>
                 <div class="row" >
                     <div>Charger:</div>
                     <div>{product.data.fields.Charger__c.value}</div>
@@ -51,14 +51,20 @@
                 <div class="row" >
                     <div>Motor:</div>
                     <div>{product.data.fields.Motor__c.value}</div>
-                </div> -->
+                </div> 
+
+                <section>Description</section>
+
+                <div>
+                    <div>{product.data.fields.Description__c.value}</div>
+                </div> 
 
                 <div class="navbut"><br>
                     <div class="navbut2" id="customizar">
-                        //Button customize
+                        <!--Button customize-->
                     <lightning-button  variant="brand" label="Customize" title="Brand action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
                 </div>
-                //Botton Buy
+                <!--Botton Buy-->
                 <lightning-button  label="Buy" title="Neutral action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
                 </div>
 
