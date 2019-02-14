@@ -119,7 +119,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
             attributes: {
-                recordId: this.recordId,
+                recordId: this.product.data.fields.	Product_ID__c.value,
                 objectApiName: PRODUCT_OBJECTX.objectApiName,
                 actionName: 'view'
             }
