@@ -91,10 +91,10 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
         this.recordId = productId;
         //alert(this.product.data.fields.Modelo_Componente__c.value);
         alert(this.product.data.fields.Battery__c.value);
-          if(this.product.data.fields.Battery__c.value === ""){
+          if(this.product.data.fields.Battery__c.value === "null" || this.product.data.fields.Battery__c.value === null || this.product.data.fields.Battery__c.value === ""){
 
    
-            product.data.fields.Battery__c.value = 'Not Applicable';
+            this.product.data.fields.Battery__c.value = 'Not Applicable';
 
             alert(this.product.data.fields.Battery__c.value);
             alert(product.data.fields.Battery__c.value);
