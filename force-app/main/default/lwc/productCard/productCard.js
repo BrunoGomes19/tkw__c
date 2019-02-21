@@ -2,7 +2,7 @@
 /* eslint-disable @lwc/lwc/no-document-query */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
-import { LightningElement, wire } from 'lwc';
+import { LightningElement, wire, track } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
 import { NavigationMixin } from 'lightning/navigation';
 
@@ -13,7 +13,7 @@ import { getRecord } from 'lightning/uiRecordApi';
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
 /** Product__c Schema. */
-import PRODUCT_OBJECT from '@salesforce/schema/Product__c';
+//import PRODUCT_OBJECT from '@salesforce/schema/Product__c';
 import PRODUCT_OBJECTX from '@salesforce/schema/Product2';
 import NAME_FIELD from '@salesforce/schema/Product__c.Name';
 import PRODUCT_ID from '@salesforce/schema/Product__c.Product_ID__c';
@@ -134,4 +134,27 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
         window.location.replace("https://tekkon-wheels-dev-ed.lightning.force.com/lightning/n/Customization");
 
     }
+
+    @track openmodel = false;
+    openmodal() {
+        if(this.product.data.fields.Modelo_Componente__c.value === 'Model'){
+
+            this.openmodel = true
+
+        }else{
+
+            alert('Este produto não é customizável!');
+
+        }
+
+    }
+    closeModal() {
+        this.openmodel = false
+    } 
+    saveMethod() {
+        // eslint-disable-next-line no-alert
+        alert('save method invoked');
+        this.closeModal();
+    }
+
 }
