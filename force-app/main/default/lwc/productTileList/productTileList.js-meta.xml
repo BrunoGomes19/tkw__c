@@ -10,7 +10,7 @@
         <target>lightningCommunity__Default</target>
     </targets>
     <targetConfigs>
-        <targetConfig targets="lightning__RecordPage">
+        <targetConfig targets="lightningCommunity__Page">
             <property name="searchBarIsVisible" type="Boolean" label="Search bar visible" />
             <property name="tilesAreDraggable" type="Boolean" label="Product tiles are draggable" />
             <objects>
