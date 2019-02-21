@@ -15,6 +15,9 @@ export default class ProductTileList extends LightningElement {
      * Whether to display the search bar.
      * TODO - normalize value because it may come as a boolean, string or otherwise.
      */
+    
+    @wire(CurrentPageReference) pageRef;
+    
     @api searchBarIsVisible = false;
 
     /**
@@ -37,8 +40,6 @@ export default class ProductTileList extends LightningElement {
 
     /** JSON.stringified version of filters to pass to apex */
     filters = '{}';
-
-    @wire(CurrentPageReference) pageRef;
 
     /**
      * Load the list of available products.
