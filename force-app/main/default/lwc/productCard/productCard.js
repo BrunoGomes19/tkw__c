@@ -9,6 +9,8 @@ import { NavigationMixin } from 'lightning/navigation';
 /** Wire adapter to load records, utils to extract values. */
 import { getRecord } from 'lightning/uiRecordApi';
 
+import getForks from '@salesforce/apex/AccountContactController.getForks';
+
 /** Pub-sub mechanism for sibling component communication. */
 import { registerListener, unregisterAllListeners } from 'c/pubsub';
 
@@ -71,6 +73,9 @@ const fields = [
  * Component to display details of a Product__c.
  */
 export default class ProductCard extends NavigationMixin(LightningElement) {
+
+    @wire(getForks) forklist; 
+
     /** Id of Product__c to display. */
     recordId;
     
