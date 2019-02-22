@@ -80,15 +80,14 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
 
     get options() {
         return [
-            { label: 'Fork1', value: 'Fork1' },
-            { label: 'Fork2', value: 'Fork2' },
-            { label: 'Fork3', value: 'Fork3' },
+            { label: 'New', value: 'new' },
+            { label: 'In Progress', value: 'inProgress' },
+            { label: 'Finished', value: 'finished' },
         ];
     }
 
     handleChange(event) {
         this.value = event.detail.value;
-        alert(this.value);
     }
 
     /** Id of Product__c to display. */
