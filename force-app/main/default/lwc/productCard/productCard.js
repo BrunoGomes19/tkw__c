@@ -76,6 +76,21 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
 
     @wire(getForks) forklist; 
 
+    @track value = 'inProgress';
+
+    get options() {
+        return [
+            { label: 'Fork1', value: 'Fork1' },
+            { label: 'Fork2', value: 'Fork2' },
+            { label: 'Fork3', value: 'Fork3' },
+        ];
+    }
+
+    handleChange(event) {
+        this.value = event.detail.value;
+        alert(this.value);
+    }
+
     /** Id of Product__c to display. */
     recordId;
     

@@ -130,14 +130,15 @@
                         </center>-->
                             <p style="padding-bottom:1%">Fork</p>
                             
-                            <select>
-
-                                <option selected>{product.data.fields.Fork__c.value}</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
+                            <lightning-combobox
+                                    name="progress"
+                                    label="Forks"
+                                    value=""
+                                    placeholder="Select Fork"
+                                    options={options}
+                                    onchange={handleChange}
+                                    required
+                            ></lightning-combobox>
 
                             <br><br>
                             <p>Forks</p>
