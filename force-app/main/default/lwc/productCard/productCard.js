@@ -75,10 +75,14 @@ const fields = [
 export default class ProductCard extends NavigationMixin(LightningElement) {
 
     @wire(getForks) forklist; 
+    
+    
+    
 
     @track value = 'inProgress';
 
     get options() {
+
         return [
             { label: 'New', value: 'new' },
             { label: 'In Progress', value: 'inProgress' },
@@ -154,6 +158,11 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
 
     }
 
+    handleClick2(){
+        window.location.replace("https://tekkon-wheels-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent");
+
+    }
+
     @track openmodel = false;
     openmodal() {
         if(this.product.data.fields.Modelo_Componente__c.value === 'Model'){
@@ -172,7 +181,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     } 
     saveMethod() {
         // eslint-disable-next-line no-alert
-        alert('save method invoked');
+        alert('Produto nr XXXXXXXX selecionado');
         this.closeModal();
     }
 

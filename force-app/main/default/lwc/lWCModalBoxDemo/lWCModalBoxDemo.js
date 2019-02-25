@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { LightningElement, track } from 'lwc';
 
 export default class LWCModalBoxDemo extends LightningElement {
@@ -10,7 +11,8 @@ export default class LWCModalBoxDemo extends LightningElement {
     } 
     saveMethod() {
         // eslint-disable-next-line no-alert
-        alert('save method invoked');
+        //alert('save method invoked');
+        alert('Produto nr XXXXXXXX selecionado');
         this.closeModal();
     }
 }
