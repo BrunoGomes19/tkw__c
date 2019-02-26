@@ -77,8 +77,19 @@ const fields = [
 export default class ProductCard extends NavigationMixin(LightningElement) {
 
     @wire(getForks) forklist; //.data.Name.value
+
+    @track i = 0;
+
+    @track forks = [];
+
+    /*get forklist() {
+        return this._forklist;
+    }
+    set forklist(value) {
+        this._forklist = value;
+    }*/
     
-    @track value = 'inProgress';
+    @track value = '01T1T000001UP21AAA';
 
     get optionsForks() {
 
@@ -90,6 +101,26 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
             
         }
         return forks;*/
+
+        for (const iterator of this.forklist.data) {
+            
+            this.forks.push({ label: this.forklist.data[this.i].Name, value: this.forklist.data[this.i].Id });
+
+            this.i++;
+
+        }
+/*
+        for (let index = 0; index < 5; index++) {
+
+            forks.push({ label: +'"'+ forklist[index] +'"' , value: '2' },);
+            
+        }*/
+
+        this.i = 0;
+
+        return this.forks;
+
+/*
         return [
             { label: 'RockShox Judy Silver TK Solo Air Boost 27.5" Suspension Fork', value: 'FO-00027' },
             { label: 'Fox Racing Shox 36 Float 27.5" FIT GRIP2 Factory Boost Suspension Fork', value: 'FO-00028' },
@@ -97,6 +128,9 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
             { label: 'Fox Racing Shox 34 Float SC 29 "120 FIT4 Factory 51 OffSet Boost Suspension Fork', value: 'FO-00083' },
             { label: 'RockShox BoXXer RC DebonAir Boost 29" Suspension Fork', value: 'FO-00087' },
         ];
+        */
+
+
     }
 
     handleChange(event) {
@@ -134,7 +168,6 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
      */
     handleProductSelected(productId) {
         this.recordId = productId;
-        //console.log(forklist.data.length);
 
         /*alert(this.product.data.fields.Battery__c.value);
           if(this.product.data.fields.Battery__c.value == null){
@@ -148,7 +181,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     }
 
     handleNavigateToRecord() {
-        //alert(forklist.data.length);
+
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
             attributes: {
@@ -173,26 +206,42 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
 
     }
 
-    @track openmodel = false;
-    openmodal() {
+        
+
+    navigateToNewRecordPage() {
+
+        // Opens the new Account record modal
+        // to create an Account.
+        this[NavigationMixin.Navigate]({
+            type: 'standard__objectPage',
+            attributes: {
+                objectApiName: 'Opportunity',
+                actionName: 'new'
+            }
+        });
+        
+    }
+
+    navigateToNewRecordPageCustomize() {
+
         if(this.product.data.fields.Modelo_Componente__c.value === 'Model'){
 
-            this.openmodel = true
+        // Opens the new Account record modal
+        // to create an Account.
+        this[NavigationMixin.Navigate]({
+            type: 'standard__objectPage',
+            attributes: {
+                objectApiName: 'Product__c',
+                actionName: 'new'
+            }
+        });
 
-        }else{
+    }else{
 
-            alert('Este produto não é customizável!');
-
-        }
+        alert('Este produto não é customizável!');
 
     }
-    closeModal() {
-        this.openmodel = false
-    } 
-    saveMethod() {
-        // eslint-disable-next-line no-alert
-        alert('Produto nr XXXXXXXX selecionado');
-        this.closeModal();
+
     }
 
 }
