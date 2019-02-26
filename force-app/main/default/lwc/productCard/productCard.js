@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable @lwc/lwc/no-document-query */
 /* eslint-disable no-console */
@@ -40,6 +41,7 @@ import HEADSET_FIELD from '@salesforce/schema/Product__c.Head_Set__c';
 import PEDALS_FIELD from '@salesforce/schema/Product__c.Pedals__c';
 import REARWHEEL_FIELD from '@salesforce/schema/Product__c.Rear_Wheel__c';
 import SADDLE_FIELD from '@salesforce/schema/Product__c.Saddle__c';
+import List from 'c/list';
 
 
 /** Record fields to load. */
@@ -74,15 +76,20 @@ const fields = [
  */
 export default class ProductCard extends NavigationMixin(LightningElement) {
 
-    @wire(getForks) forklist; 
+    @wire(getForks) forklist; //.data.Name.value
     
-    
-    
-
     @track value = 'inProgress';
 
     get options() {
 
+        /*let x =1;
+        const forks=[];
+        for (let index = 0; index < forklist.length; index++) {
+            forks.push({ label: x, value: x },);
+            x += 1;
+            
+        }
+        return forks;*/
         return [
             { label: 'New', value: 'new' },
             { label: 'In Progress', value: 'inProgress' },
@@ -125,6 +132,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
      */
     handleProductSelected(productId) {
         this.recordId = productId;
+        //console.log(forklist.data.length);
 
         /*alert(this.product.data.fields.Battery__c.value);
           if(this.product.data.fields.Battery__c.value == null){
@@ -138,7 +146,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     }
 
     handleNavigateToRecord() {
-        
+        //alert(forklist.data.length);
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
             attributes: {
