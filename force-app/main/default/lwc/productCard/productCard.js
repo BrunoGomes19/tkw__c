@@ -80,7 +80,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     
     @track value = 'inProgress';
 
-    get options() {
+    get optionsForks() {
 
         /*let x =1;
         const forks=[];
@@ -91,9 +91,11 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
         }
         return forks;*/
         return [
-            { label: 'New', value: 'new' },
-            { label: 'In Progress', value: 'inProgress' },
-            { label: 'Finished', value: 'finished' },
+            { label: 'RockShox Judy Silver TK Solo Air Boost 27.5" Suspension Fork', value: 'FO-00027' },
+            { label: 'Fox Racing Shox 36 Float 27.5" FIT GRIP2 Factory Boost Suspension Fork', value: 'FO-00028' },
+            { label: '3T Rigid Team Carbon 29" Fork', value: 'FO-00029' },
+            { label: 'Fox Racing Shox 34 Float SC 29 "120 FIT4 Factory 51 OffSet Boost Suspension Fork', value: 'FO-00083' },
+            { label: 'RockShox BoXXer RC DebonAir Boost 29" Suspension Fork', value: 'FO-00087' },
         ];
     }
 
