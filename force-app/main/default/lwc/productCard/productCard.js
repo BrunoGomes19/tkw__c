@@ -231,7 +231,7 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
         this[NavigationMixin.Navigate]({
             type: 'standard__objectPage',
             attributes: {
-                objectApiName: 'Product__c',
+                objectApiName: 'Product2',
                 actionName: 'new'
             }
         });
