@@ -43,6 +43,19 @@ import REARWHEEL_FIELD from '@salesforce/schema/Product__c.Rear_Wheel__c';
 import SADDLE_FIELD from '@salesforce/schema/Product__c.Saddle__c';
 import List from 'c/list';
 
+import BATTERYID_FIELD from '@salesforce/schema/Product__c.Battery_Id__c';
+import CHARGERID_FIELD from '@salesforce/schema/Product__c.Charger_Id__c';
+import FORKID_FIELD from '@salesforce/schema/Product__c.Fork_Id__c';
+import FRAMEID_FIELD from '@salesforce/schema/Product__c.Frame_Id__c';
+import FRONTBRAKESID_FIELD from '@salesforce/schema/Product__c.Front_Brakes_Id__c';
+import FRONTWHEELID_FIELD from '@salesforce/schema/Product__c.Front_Wheel_Id__c';
+import HEADSETID_FIELD from '@salesforce/schema/Product__c.Head_Set_Id__c';
+import MOTORID_FIELD from '@salesforce/schema/Product__c.Motor_Id__c';
+import PEDALSID_FIELD from '@salesforce/schema/Product__c.Pedals_Id__c';
+import REARBRAKESID_FIELD from '@salesforce/schema/Product__c.Rear_Brakes_Id__c';
+import REARWHEELID_FIELD from '@salesforce/schema/Product__c.Rear_Wheel_Id__c';
+import SADDLEID_FIELD from '@salesforce/schema/Product__c.Saddle_Id__c';
+
 
 /** Record fields to load. */
 const fields = [
@@ -67,7 +80,19 @@ const fields = [
     HEADSET_FIELD,
     PEDALS_FIELD,
     REARWHEEL_FIELD,
-    SADDLE_FIELD
+    SADDLE_FIELD,
+    BATTERYID_FIELD,
+    CHARGERID_FIELD,
+    FORKID_FIELD,
+    FRAMEID_FIELD,
+    FRONTBRAKESID_FIELD,
+    FRONTWHEELID_FIELD,
+    HEADSETID_FIELD,
+    MOTORID_FIELD,
+    PEDALSID_FIELD,
+    REARBRAKESID_FIELD,
+    REARWHEELID_FIELD,
+    SADDLEID_FIELD
 ];
 
 
@@ -243,5 +268,34 @@ export default class ProductCard extends NavigationMixin(LightningElement) {
     }
 
     }
+
+    @track openmodel = false;
+    openmodal() {
+
+        if(this.product.data.fields.Modelo_Componente__c.value === 'Model'){
+
+            this.openmodel = true
+
+        }else{
+
+            alert('Este produto não é customizável!');
+
+        }
+
+
+        
+    }
+    closeModal() {
+        this.openmodel = false
+    } 
+    saveMethod() {
+        alert('save method invoked');
+        this.closeModal();
+    }
+
+    addProduct() {
+        alert("This product has been customized successfully!");
+        this.closeModal();
+    }   
 
 }

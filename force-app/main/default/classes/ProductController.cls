@@ -68,13 +68,13 @@ public with sharing class ProductController {
         result.pageSize = pageSize;
         result.pageNumber = pageNumber;
         result.totalItemCount = Database.countQuery('SELECT count() FROM Product__c ' + whereClause);
-        result.records = Database.query('SELECT Id, Name, MSRP__c, Description__c, Category__c, Rating__c, Picture_URL__c, Material__c, Battery__c, Modelo_Componente__c, Charger__c, Fork__c, Front_Brakes__c,	Motor__c, Rear_Brakes__c, Frame__c, Front_Wheel__c, Rear_Wheel__c, Head_Set__c, Pedals__c, Saddle__c FROM Product__c ' + whereClause + ' ORDER BY Name LIMIT :pageSize OFFSET :offset');
+        result.records = Database.query('SELECT Id, Name, MSRP__c, Description__c, Category__c, Rating__c, Picture_URL__c, Material__c, Battery__c, Modelo_Componente__c, Charger__c, Fork__c, Front_Brakes__c,	Motor__c, Rear_Brakes__c, Frame__c, Front_Wheel__c, Rear_Wheel__c, Head_Set__c, Pedals__c, Saddle__c, Battery_Id__c, Charger_Id__c, Fork_Id__c, Frame_Id__c, Front_Brakes_Id__c, Front_Wheel_Id__c, Head_Set_Id__c, Motor_Id__c, Pedals_Id__c, Rear_Brakes_Id__c, Rear_Wheel_Id__c, Saddle_Id__c FROM Product__c ' + whereClause + ' ORDER BY Name LIMIT :pageSize OFFSET :offset');
         return result;
     }
 
     @AuraEnabled(Cacheable=true)
     public static Product__c[] getSimilarProducts(Id productId, Id familyId) {
-        return [SELECT Id, Name, MSRP__c, Description__c, Category__c, Rating__c, Picture_URL__c, Material__c, Battery__c, Modelo_Componente__c, Charger__c, Fork__c, Front_Brakes__c, Motor__c, Rear_Brakes__c, Frame__c, Front_Wheel__c, Rear_Wheel__c, Head_Set__c, Pedals__c, Saddle__c FROM Product__c WHERE Product_Family__c=:familyId AND Id!=:productId];
+        return [SELECT Id, Name, MSRP__c, Description__c, Category__c, Rating__c, Picture_URL__c, Material__c, Battery__c, Modelo_Componente__c, Charger__c, Fork__c, Front_Brakes__c, Motor__c, Rear_Brakes__c, Frame__c, Front_Wheel__c, Rear_Wheel__c, Head_Set__c, Pedals__c, Saddle__c, Battery_Id__c, Charger_Id__c, Fork_Id__c, Frame_Id__c, Front_Brakes_Id__c, Front_Wheel_Id__c, Head_Set_Id__c, Motor_Id__c, Pedals_Id__c, Rear_Brakes_Id__c, Rear_Wheel_Id__c, Saddle_Id__c FROM Product__c WHERE Product_Family__c=:familyId AND Id!=:productId];
     }
 
 }

@@ -53,9 +53,6 @@
                     <div>{product.data.fields.Motor__c.value}</div>
                 </div> 
 
-                
-
-
                 <div class="row" >
                     <div>Front Wheel:</div>
                     <div>{product.data.fields.Front_Wheel__c.value}</div>
@@ -89,18 +86,12 @@
                 </div> 
 
                 <div class="navbut"><br>
-                    <!--<div class="navbut2" id="customizar">-->
-                        <!--Button customize-->
-                    <!--<lightning-button  variant="brand" label="Customize" title="Brand action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>-->
-                    <lightning-button label="Customize" variant="brand" onclick={navigateToNewRecordPageCustomize}></lightning-button>
-                <!--</div>-->
-                <!--Botton Buy-->
+
+                    <lightning-button label="Customize" variant="brand" onclick={openmodal}></lightning-button>
 
                 <lightning-button  label="Buy" title="Neutral action" onclick={navigateToNewRecordPage} class="slds-m-left_x-small"></lightning-button>
                 </div>
 
-        
-                
             </div>
             
         </template>                            
@@ -126,38 +117,38 @@
                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Customize</h2>
                     </header>
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                       <!-- <center><h2><b>Titulo</b></h2><br/>
-                        </center>-->
-                            <p style="padding-bottom:1%">Fork</p>
-                            
-                            <lightning-combobox
-                                    name="progress"
-                                    label="Forks"
-                                    value=""
-                                    placeholder="Select Fork"
-                                    options={optionsForks}
-                                    onchange={handleChange}
-                                    required
-                            ></lightning-combobox>
-                        <br>
-                            <p>Selected value is: {value}</p>
+                           
+                  
+                                    <lightning-record-edit-form object-api-name="Product2" onsuccess={addProduct}>
+                                        <lightning-messages></lightning-messages>
+                                        <div class="slds-m-around_medium">
+                                            <lightning-input-field field-name='Name' value={product.data.fields.Name.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Battery__c' value={product.data.fields.Battery_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Charger__c' value={product.data.fields.Charger_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Fork__c' value={product.data.fields.Fork_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Frame__c' value={product.data.fields.Frame_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Front_Brake__c' value={product.data.fields.Front_Brakes_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Front_Wheel__c' value={product.data.fields.Front_Wheel_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Head_Set__c' value={product.data.fields.Head_Set_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Motor__c' value={product.data.fields.Motor_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Pedals__c' value={product.data.fields.Pedals_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Rear_Brake__c' value={product.data.fields.Rear_Brakes_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Rear_Wheel__c' value={product.data.fields.Rear_Wheel_Id__c.value}></lightning-input-field>
+                                            <lightning-input-field field-name='Saddle__c' value={product.data.fields.Saddle_Id__c.value}></lightning-input-field>
+                                            <br>
+                                            <!--<lightning-input-field field-name='Customized_Item__c' value=true></lightning-input-field>-->
+                                            
+                                       </div><div class="slds-m-top_medium">
+                                            
+                                            <lightning-button style="float:right;" variant="brand" type="submit" name="save" label="Create Product">
+                                            </lightning-button>
 
-                            <!--<br><br>
-                            <p>Forks</p>
+                                            <lightning-button label="Cancel" variant="neutral" style="float:right;padding-right:3%;" onclick={closeModal}></lightning-button>
 
-                            <template for:each={forklist.data} for:item="product2">
-                                <li key={product2.Id}>
-                                    {product2.Name}
-                                </li>
-                            </template>
-                        
-                            <br>-->
-
+                                       </div>
+                                    </lightning-record-edit-form>
+                                                   
                     </div>
-                    <footer class="slds-modal__footer">
-                        <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <lightning-button label="Save" variant="brand" onclick={saveMethod}></lightning-button>
-                    </footer>
                 </div>
             </section>
             <div class="slds-backdrop slds-backdrop_open"></div>
