@@ -136,11 +136,12 @@
                                             <lightning-input-field field-name='Rear_Wheel__c' value={product.data.fields.Rear_Wheel_Id__c.value}></lightning-input-field>
                                             <lightning-input-field field-name='Saddle__c' value={product.data.fields.Saddle_Id__c.value}></lightning-input-field>
                                             <br>
-                                            <!--<lightning-input-field field-name='Customized_Item__c' value=true></lightning-input-field>-->
+                                            <!--<lightning-input-field field-name='Customized_Item__c' style="display:none;" value={teste}></lightning-input-field>-->
+                                            <lightning-input-field field-name='Customized_Item__c' style="display:none;" value></lightning-input-field>
                                             
                                        </div><div class="slds-m-top_medium">
                                             
-                                            <lightning-button style="float:right;" variant="brand" type="submit" name="save" label="Create Product">
+                                            <lightning-button style="float:right;" variant="brand" type="submit" name="save" label="Create Customization">
                                             </lightning-button>
 
                                             <lightning-button label="Cancel" variant="neutral" style="float:right;padding-right:3%;" onclick={closeModal}></lightning-button>
